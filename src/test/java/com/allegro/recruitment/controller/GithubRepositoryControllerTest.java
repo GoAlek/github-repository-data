@@ -1,6 +1,6 @@
 package com.allegro.recruitment.controller;
 
-import com.allegro.recruitment.controller.dto.RepositoryDetails;
+import com.allegro.recruitment.controller.dto.GithubRepositoryDetails;
 import com.allegro.recruitment.service.GithubRepositoryService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class GithubRepositoryControllerTest {
     @Test
     public void getRepositoryDetails() {
         final String testOwner = "testOwner", testRepositoryName = "testRepository";
-        RepositoryDetails repositoryDetails = new RepositoryDetails.RepositoryDetailsBuilder()
+        GithubRepositoryDetails githubRepositoryDetails = GithubRepositoryDetails.builder()
                 .fullName("testRepository")
                 .description("testDescription")
                 .cloneUrl("https://github.com/test/test.git")
@@ -33,11 +33,11 @@ public class GithubRepositoryControllerTest {
 
         when(githubRepositoryService
                 .getRepositoryDetails(testOwner, testRepositoryName))
-                .thenReturn(repositoryDetails);
+                .thenReturn(githubRepositoryDetails);
 
-        RepositoryDetails result = githubRepositoryController.getRepositoryDetails(testOwner, testRepositoryName);
+        GithubRepositoryDetails result = githubRepositoryController.getRepositoryDetails(testOwner, testRepositoryName);
 
-        Assert.assertEquals(repositoryDetails, result);
+        Assert.assertEquals(githubRepositoryDetails, result);
     }
 
 }

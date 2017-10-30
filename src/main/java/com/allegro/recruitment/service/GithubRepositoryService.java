@@ -1,9 +1,9 @@
 package com.allegro.recruitment.service;
 
-import com.allegro.recruitment.controller.dto.RepositoryDetails;
+import com.allegro.recruitment.controller.dto.GithubRepositoryDetails;
 import com.allegro.recruitment.repository.GithubRestRepository;
 import com.allegro.recruitment.repository.dto.GithubRepository;
-import com.allegro.recruitment.dto.RepositoryDetailsMapper;
+import com.allegro.recruitment.dto.GithubRepositoryDetailsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,18 +11,18 @@ import org.springframework.stereotype.Service;
 public class GithubRepositoryService {
 
     private GithubRestRepository githubRestRepository;
-    private RepositoryDetailsMapper repositoryDetailsMapper;
+    private GithubRepositoryDetailsMapper githubRepositoryDetailsMapper;
 
     @Autowired
     public GithubRepositoryService(
             GithubRestRepository githubRestRepository,
-            RepositoryDetailsMapper repositoryDetailsMapper) {
+            GithubRepositoryDetailsMapper githubRepositoryDetailsMapper) {
         this.githubRestRepository = githubRestRepository;
-        this.repositoryDetailsMapper = repositoryDetailsMapper;
+        this.githubRepositoryDetailsMapper = githubRepositoryDetailsMapper;
     }
 
-    public RepositoryDetails getRepositoryDetails(String owner, String repositoryName) {
+    public GithubRepositoryDetails getRepositoryDetails(String owner, String repositoryName) {
         GithubRepository githubRepository = githubRestRepository.getGithubRepository(owner, repositoryName);
-        return repositoryDetailsMapper.map(githubRepository);
+        return githubRepositoryDetailsMapper.map(githubRepository);
     }
 }
