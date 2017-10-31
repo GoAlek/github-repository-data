@@ -1,5 +1,6 @@
 package com.allegro.recruitment.repository;
 
+import com.allegro.recruitment.interceptors.GithubHeaderRequestInterceptor;
 import com.allegro.recruitment.repository.dto.GithubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,9 +15,13 @@ public class GithubRestRepository {
 
     @Autowired
     public GithubRestRepository(
+            @Value("${github-root-uri}") String gitHubRootUri,
             RestTemplateBuilder restTemplateBuilder,
-            @Value("${github-root-uri}") String gitHubRootUri) {
-        this.restTemplate = restTemplateBuilder.rootUri(gitHubRootUri).build();
+            GithubHeaderRequestInterceptor githubHeaderRequestInterceptor) {
+        this.restTemplate = restTemplateBuilder
+                .rootUri(gitHubRootUri)
+                .interceptors(githubHeaderRequestInterceptor)
+                .build();
     }
 
     public GithubRepository getGithubRepository(String owner, String repositoryName) {

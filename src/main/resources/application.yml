@@ -1,1 +1,6 @@
+# Github API
 github-root-uri: "https://api.github.com"
+
+# Github API required headers
+github-accept-header: "application/vnd.github.v3+json"
+github-authorization-header: "token f084826ecc0a130b14bf98d92a7097b4a60a85cc"
