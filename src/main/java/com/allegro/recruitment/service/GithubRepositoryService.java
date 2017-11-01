@@ -1,6 +1,6 @@
 package com.allegro.recruitment.service;
 
-import com.allegro.recruitment.controller.dto.GithubRepositoryDetails;
+import com.allegro.recruitment.controller.dto.RepositoryDetails;
 import com.allegro.recruitment.repository.GithubRestRepository;
 import com.allegro.recruitment.repository.dto.GithubRepoData;
 import com.allegro.recruitment.dto.GithubRepositoryDetailsMapper;
@@ -21,7 +21,7 @@ public class GithubRepositoryService {
         this.githubRepositoryDetailsMapper = githubRepositoryDetailsMapper;
     }
 
-    public GithubRepositoryDetails getGithubRepositoryDetails(String owner, String repositoryName) {
+    public RepositoryDetails getGithubRepositoryDetails(String owner, String repositoryName) {
         GithubRepoData githubRepoData = githubRestRepository.getGithubRepositoryData(owner, repositoryName);
         return githubRepositoryDetailsMapper.map(githubRepoData);
     }

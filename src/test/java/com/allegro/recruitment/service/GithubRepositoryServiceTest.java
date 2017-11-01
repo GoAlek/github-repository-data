@@ -1,6 +1,6 @@
 package com.allegro.recruitment.service;
 
-import com.allegro.recruitment.controller.dto.GithubRepositoryDetails;
+import com.allegro.recruitment.controller.dto.RepositoryDetails;
 import com.allegro.recruitment.dto.GithubRepositoryDetailsMapper;
 import com.allegro.recruitment.repository.GithubRestRepository;
 import com.allegro.recruitment.repository.dto.GithubRepoData;
@@ -41,7 +41,7 @@ public class GithubRepositoryServiceTest {
         when(githubRestRepository.getGithubRepositoryData(testOwner, testRepositoryName)).thenReturn(githubRepoData);
         when(githubRepositoryDetailsMapper.map(githubRepoData)).thenCallRealMethod();
 
-        GithubRepositoryDetails result = githubRepositoryService
+        RepositoryDetails result = githubRepositoryService
                 .getGithubRepositoryDetails(testOwner, testRepositoryName);
 
         assertThat(result, hasProperty("fullName", equalTo(githubRepoData.getFull_name())));

@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class GithubRepositoryDetails {
+public class RepositoryDetails {
     private String fullName;
     private String description;
     private String cloneUrl;

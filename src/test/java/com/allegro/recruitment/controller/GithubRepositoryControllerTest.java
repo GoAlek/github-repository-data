@@ -1,6 +1,6 @@
 package com.allegro.recruitment.controller;
 
-import com.allegro.recruitment.controller.dto.GithubRepositoryDetails;
+import com.allegro.recruitment.controller.dto.RepositoryDetails;
 import com.allegro.recruitment.service.GithubRepositoryService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,16 +14,16 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringRunner.class)
 public class GithubRepositoryControllerTest {
 
-    @InjectMocks
-    private GithubRepositoryController githubRepositoryController;
-
     @Mock
     private GithubRepositoryService githubRepositoryService;
+
+    @InjectMocks
+    private GithubRepositoryController githubRepositoryController;
 
     @Test
     public void getRepositoryDetails_ReturnProperResponse_IfOwnerAndRepositoryAreValid() {
         final String testOwner = "testOwner", testRepositoryName = "testRepository";
-        GithubRepositoryDetails githubRepositoryDetails = GithubRepositoryDetails.builder()
+        RepositoryDetails repositoryDetails = RepositoryDetails.builder()
                 .fullName("testRepository")
                 .description("testDescription")
                 .cloneUrl("https://github.com/test/test.git")
@@ -33,11 +33,11 @@ public class GithubRepositoryControllerTest {
 
         when(githubRepositoryService
                 .getGithubRepositoryDetails(testOwner, testRepositoryName))
-                .thenReturn(githubRepositoryDetails);
+                .thenReturn(repositoryDetails);
 
-        GithubRepositoryDetails result = githubRepositoryController.getRepositoryDetails(testOwner, testRepositoryName);
+        RepositoryDetails result = githubRepositoryController.getRepositoryDetails(testOwner, testRepositoryName);
 
-        Assert.assertEquals(githubRepositoryDetails, result);
+        Assert.assertEquals(repositoryDetails, result);
     }
 
 }
