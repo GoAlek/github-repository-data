@@ -21,7 +21,7 @@ public class GithubRepositoryControllerTest {
     private GithubRepositoryService githubRepositoryService;
 
     @Test
-    public void getRepositoryDetails() {
+    public void getRepositoryDetails_ReturnProperResponse_IfOwnerAndRepositoryAreValid() {
         final String testOwner = "testOwner", testRepositoryName = "testRepository";
         GithubRepositoryDetails githubRepositoryDetails = GithubRepositoryDetails.builder()
                 .fullName("testRepository")
