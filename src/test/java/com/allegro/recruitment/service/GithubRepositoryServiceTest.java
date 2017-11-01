@@ -11,7 +11,6 @@ import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.mockito.Mockito.when;
@@ -24,7 +23,6 @@ public class GithubRepositoryServiceTest {
 
     @Mock
     private GithubRepositoryDetailsMapper githubRepositoryDetailsMapper;
-
 
     @InjectMocks
     private GithubRepositoryService githubRepositoryService;
