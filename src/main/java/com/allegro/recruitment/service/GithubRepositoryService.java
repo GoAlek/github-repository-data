@@ -2,7 +2,7 @@ package com.allegro.recruitment.service;
 
 import com.allegro.recruitment.controller.dto.GithubRepositoryDetails;
 import com.allegro.recruitment.repository.GithubRestRepository;
-import com.allegro.recruitment.repository.dto.GithubRepository;
+import com.allegro.recruitment.repository.dto.GithubRepoData;
 import com.allegro.recruitment.dto.GithubRepositoryDetailsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +21,8 @@ public class GithubRepositoryService {
         this.githubRepositoryDetailsMapper = githubRepositoryDetailsMapper;
     }
 
-    public GithubRepositoryDetails getRepositoryDetails(String owner, String repositoryName) {
-        GithubRepository githubRepository = githubRestRepository.getGithubRepository(owner, repositoryName);
-        return githubRepositoryDetailsMapper.map(githubRepository);
+    public GithubRepositoryDetails getGithubRepositoryDetails(String owner, String repositoryName) {
+        GithubRepoData githubRepoData = githubRestRepository.getGithubRepositoryData(owner, repositoryName);
+        return githubRepositoryDetailsMapper.map(githubRepoData);
     }
 }

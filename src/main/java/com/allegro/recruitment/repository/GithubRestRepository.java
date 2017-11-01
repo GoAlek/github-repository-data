@@ -1,6 +1,6 @@
 package com.allegro.recruitment.repository;
 
-import com.allegro.recruitment.repository.dto.GithubRepository;
+import com.allegro.recruitment.repository.dto.GithubRepoData;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -23,8 +23,8 @@ public class GithubRestRepository {
                 .build();
     }
 
-    public GithubRepository getGithubRepository(String owner, String repositoryName) {
-        return restTemplate.getForObject("/repos/{owner}/{repo-name}", GithubRepository.class, owner, repositoryName);
+    public GithubRepoData getGithubRepositoryData(String owner, String repositoryName) {
+        return restTemplate.getForObject("/repos/{owner}/{repo-name}", GithubRepoData.class, owner, repositoryName);
     }
 
 

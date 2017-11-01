@@ -32,7 +32,7 @@ public class GithubRepositoryControllerTest {
                 .build();
 
         when(githubRepositoryService
-                .getRepositoryDetails(testOwner, testRepositoryName))
+                .getGithubRepositoryDetails(testOwner, testRepositoryName))
                 .thenReturn(githubRepositoryDetails);
 
         GithubRepositoryDetails result = githubRepositoryController.getRepositoryDetails(testOwner, testRepositoryName);

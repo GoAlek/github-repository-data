@@ -23,6 +23,6 @@ public class GithubRepositoryController {
     public GithubRepositoryDetails getRepositoryDetails(
             @PathVariable String owner,
             @PathVariable("repository-name") String repositoryName) {
-        return githubRepositoryService.getRepositoryDetails(owner, repositoryName);
+        return githubRepositoryService.getGithubRepositoryDetails(owner, repositoryName);
     }
 }

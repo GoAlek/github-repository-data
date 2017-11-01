@@ -1,9 +1,11 @@
 package com.allegro.recruitment.repository.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class GithubRepository {
+@Builder
+public class GithubRepoData {
     private String full_name;
     private String description;
     private String clone_url;
