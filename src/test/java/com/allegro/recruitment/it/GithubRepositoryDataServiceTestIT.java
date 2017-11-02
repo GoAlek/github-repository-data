@@ -1,4 +1,4 @@
-package com.allegro.recruitment.controller.it;
+package com.allegro.recruitment.it;
 
 import com.allegro.recruitment.controller.dto.RepositoryDetails;
 import com.allegro.recruitment.dto.ApiErrorResponse;
@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class GithubRepositoryControllerTestIT {
+public class GithubRepositoryDataServiceTestIT {
 
     private static final String controllerPath = "/repositories";
 
@@ -26,7 +26,7 @@ public class GithubRepositoryControllerTestIT {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void getRepositoryDetails_shouldReturnDetailsIfRepositoryExists() {
+    public void shouldReturnDetailsIfRepositoryExists() {
         ResponseEntity<RepositoryDetails> responseEntity = restTemplate
                 .getForEntity(
                         controllerPath + "/{owner}/{repository-name}",
@@ -39,7 +39,7 @@ public class GithubRepositoryControllerTestIT {
     }
 
     @Test
-    public void getRepositoryDetails_shouldReturnNotFoundIfRepositoryDoesNotExist() {
+    public void shouldReturnNotFoundIfRepositoryDoesNotExist() {
         ResponseEntity<ApiErrorResponse> responseEntity = restTemplate
                 .getForEntity(
                         controllerPath + "/{owner}/{repository-name}",
