@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class GithubRepositoryControllerIT {
+public class GithubRepositoryControllerTestIT {
 
     private static final String controllerPath = "/repositories";
 
