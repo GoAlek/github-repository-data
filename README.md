@@ -17,7 +17,7 @@ Please install JDK 8 and latest version of Maven
 In order to run the service please execute following 
 commands in the root of the project:
 * mvn package
-* java -jar target\github-repository-data-1.0-SNAPSHOT.jar
+* java -jar target\github-repository-data-1.0.jar
     
 ##### Configuration  #####
 No additional configuration required, you can change the
