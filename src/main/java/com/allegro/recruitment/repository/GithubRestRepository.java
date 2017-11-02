@@ -27,5 +27,7 @@ public class GithubRestRepository {
         return restTemplate.getForObject("/repos/{owner}/{repo-name}", GithubRepoData.class, owner, repositoryName);
     }
 
-
+    public RestTemplate getRestTemplate() {
+        return restTemplate;
+    }
 }

@@ -44,7 +44,7 @@ public class GithubRepositoryDataServiceTestIT {
                 .getForEntity(
                         controllerPath + "/{owner}/{repository-name}",
                         ApiErrorResponse.class,
-                        "google", "strange-repo");
+                        "google", "non-existent");
 
         assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
         assertNotNull(responseEntity.getBody());
