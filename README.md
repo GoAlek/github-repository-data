@@ -9,20 +9,20 @@ This README would normally document whatever steps are necessary to get your app
 
 ### How do I get set up? ###
 
-##### Prerequisites  #####
+#### Prerequisites ####
 Please install JDK 8 and latest version of Maven 
 
-##### Summary of set up  #####
+#### Summary of set up ####
 In order to run the service please execute following 
 commands in the root of the project:
 ###### mvn package ######
 ###### java -jar target\github-repository-data-1.0.jar ######
     
-##### Configuration  #####
+#### Configuration ####
 No additional configuration required, you can change the
 logging level in src\main\resources\logback.xml
 
-##### How to run tests  #####
+#### How to run tests ####
 In order to run unit tests please execute following 
 command in the root of the project:
  
@@ -33,6 +33,6 @@ command in the root of the project:
 
 ###### mvn verify ######
 
-### Who do I talk to? ###
+#### Who do I talk to? ####
 
 Aleksander Golaszewski https://bitbucket.org/GoAlek/
