@@ -15,8 +15,8 @@ Please install JDK 8 and latest version of Maven
 ##### Summary of set up  #####
 In order to run the service please execute following 
 commands in the root of the project:
-* mvn package
-* java -jar target\github-repository-data-1.0.jar
+###### mvn package ######
+###### java -jar target\github-repository-data-1.0.jar ######
     
 ##### Configuration  #####
 No additional configuration required, you can change the
@@ -26,12 +26,12 @@ logging level in src\main\resources\logback.xml
 In order to run unit tests please execute following 
 command in the root of the project:
  
-mvn test
+###### mvn test ######
 
 In order to run end-to-end tests please execute following 
 command in the root of the project:
 
-mvn verify
+###### mvn verify ######
 
 ### Who do I talk to? ###
 
