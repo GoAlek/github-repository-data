@@ -5,7 +5,6 @@ This README would normally document whatever steps are necessary to get your app
 ### What is this repository for? ###
 
 * A simple REST service which will return details of given Github repository
-* 1.0
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do I get set up? ###
@@ -26,19 +25,14 @@ logging level in src\main\resources\logback.xml
 ##### How to run tests  #####
 In order to run unit tests please execute following 
 command in the root of the project:
-* mvn test
+ 
+mvn test
 
 In order to run end-to-end tests please execute following 
 command in the root of the project:
-* mvn verify
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
+mvn verify
 
 ### Who do I talk to? ###
 
-* Aleksander Golaszewski
-* https://bitbucket.org/GoAlek/
+Aleksander Golaszewski https://bitbucket.org/GoAlek/
