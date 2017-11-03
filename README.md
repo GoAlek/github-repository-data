@@ -17,6 +17,9 @@ In order to run the service please execute following
 commands in the root of the project:
 ###### mvn package ######
 ###### java -jar target\github-repository-data-1.0.jar ######
+
+Service is available under localhost and port 8080
+Swagger documentation: http://localhost:8080/swagger-ui.html
     
 #### Configuration ####
 No additional configuration required, you can change the
