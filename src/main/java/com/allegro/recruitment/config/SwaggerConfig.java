@@ -6,9 +6,12 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.Collections;
 
 @Configuration
 @EnableSwagger2
@@ -21,14 +24,20 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.allegro.recruitment.controller"))
                 .paths(PathSelectors.any())
                 .build()
+                .produces(Collections.singleton("application/json"))
                 .apiInfo(getApiInfo());
     }
 
     private ApiInfo getApiInfo() {
+        Contact contact = new Contact(
+                "Aleksander Golaszewski",
+                "https://bitbucket.org/GoAlek/",
+                "alek.golaszewski@outlook.com");
         return new ApiInfoBuilder()
                 .title("Allegro recruitment task")
                 .description("Simple REST service which returns details of given Github repository")
                 .version("1.0")
+                .contact(contact)
                 .build();
     }
 }
