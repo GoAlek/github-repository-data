@@ -2,6 +2,7 @@ package com.allegro.recruitment.controller;
 
 import com.allegro.recruitment.controller.dto.RepositoryDetails;
 import com.allegro.recruitment.service.GithubRepositoryService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,10 @@ public class GithubRepositoryController {
     }
 
     @GetMapping("/{owner}/{repository-name}")
+    @ApiOperation(
+            value = "Returns details of given Github repository.",
+            notes = "The owner and the repository must exist in Github.",
+            response = RepositoryDetails.class)
     public RepositoryDetails getRepositoryDetails(
             @PathVariable String owner,
             @PathVariable("repository-name") String repositoryName) {
