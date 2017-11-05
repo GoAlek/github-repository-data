@@ -10,7 +10,13 @@ This README would normally document whatever steps are necessary to get your app
 ### How do I get set up? ###
 
 #### Prerequisites ####
-Please install JDK 8 and latest version of Maven 
+Please install JDK 8 and latest version of Maven.
+
+Please install Lombok plugin specific for IDE in order to avoid possible compiler warnings.
+
+* [IntelliJ](https://plugins.jetbrains.com/plugin/6317-lombok-plugin)
+* [Eclipse](https://projectlombok.org/setup/eclipse)
+* [NetBeans](https://projectlombok.org/setup/netbeans)
 
 #### Summary of set up ####
 In order to run the service please execute following 
