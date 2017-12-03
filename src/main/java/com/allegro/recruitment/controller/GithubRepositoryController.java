@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/repositories")
 public class GithubRepositoryController {
 
-    private GithubRepositoryService githubRepositoryService;
+    private final GithubRepositoryService githubRepositoryService;
 
     @Autowired
     public GithubRepositoryController(GithubRepositoryService githubRepositoryService) {
