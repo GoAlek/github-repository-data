@@ -1,7 +1,7 @@
 package com.allegro.recruitment.it;
 
-import com.allegro.recruitment.repository.GithubRestRepository;
-import com.allegro.recruitment.repository.dto.GithubRepoData;
+import com.allegro.recruitment.github.repository.GithubRestRepository;
+import com.allegro.recruitment.github.repository.dto.GithubRepoData;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

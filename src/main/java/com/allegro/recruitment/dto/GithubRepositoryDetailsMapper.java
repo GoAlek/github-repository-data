@@ -1,7 +1,7 @@
 package com.allegro.recruitment.dto;
 
-import com.allegro.recruitment.controller.dto.RepositoryDetails;
-import com.allegro.recruitment.repository.dto.GithubRepoData;
+import com.allegro.recruitment.github.controller.dto.RepositoryDetails;
+import com.allegro.recruitment.github.repository.dto.GithubRepoData;
 import org.springframework.stereotype.Component;
 
 @Component

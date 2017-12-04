@@ -1,4 +1,4 @@
-package com.allegro.recruitment.controller.dto;
+package com.allegro.recruitment.github.controller.dto;
 
 import lombok.Builder;
 import lombok.Data;

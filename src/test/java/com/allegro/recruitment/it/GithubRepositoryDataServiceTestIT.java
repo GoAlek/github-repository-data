@@ -1,6 +1,6 @@
 package com.allegro.recruitment.it;
 
-import com.allegro.recruitment.controller.dto.RepositoryDetails;
+import com.allegro.recruitment.github.controller.dto.RepositoryDetails;
 import com.allegro.recruitment.dto.ApiErrorResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;

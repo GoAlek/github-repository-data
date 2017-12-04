@@ -1,6 +1,6 @@
-package com.allegro.recruitment.repository;
+package com.allegro.recruitment.github.repository;
 
-import com.allegro.recruitment.repository.dto.GithubRepoData;
+import com.allegro.recruitment.github.repository.dto.GithubRepoData;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;

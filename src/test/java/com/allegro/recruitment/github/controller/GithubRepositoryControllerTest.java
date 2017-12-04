@@ -1,7 +1,7 @@
-package com.allegro.recruitment.controller;
+package com.allegro.recruitment.github.controller;
 
-import com.allegro.recruitment.controller.dto.RepositoryDetails;
-import com.allegro.recruitment.service.GithubRepositoryService;
+import com.allegro.recruitment.github.controller.dto.RepositoryDetails;
+import com.allegro.recruitment.github.service.GithubRepositoryService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

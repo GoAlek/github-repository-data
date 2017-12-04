@@ -1,7 +1,7 @@
-package com.allegro.recruitment.controller;
+package com.allegro.recruitment.github.controller;
 
-import com.allegro.recruitment.controller.dto.RepositoryDetails;
-import com.allegro.recruitment.service.GithubRepositoryService;
+import com.allegro.recruitment.github.controller.dto.RepositoryDetails;
+import com.allegro.recruitment.github.service.GithubRepositoryService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

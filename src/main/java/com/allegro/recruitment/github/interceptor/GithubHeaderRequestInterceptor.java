@@ -1,4 +1,4 @@
-package com.allegro.recruitment.interceptors;
+package com.allegro.recruitment.github.interceptor;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;

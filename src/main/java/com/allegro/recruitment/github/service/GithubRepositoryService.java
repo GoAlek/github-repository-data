@@ -1,8 +1,8 @@
-package com.allegro.recruitment.service;
+package com.allegro.recruitment.github.service;
 
-import com.allegro.recruitment.controller.dto.RepositoryDetails;
-import com.allegro.recruitment.repository.GithubRestRepository;
-import com.allegro.recruitment.repository.dto.GithubRepoData;
+import com.allegro.recruitment.github.controller.dto.RepositoryDetails;
+import com.allegro.recruitment.github.repository.GithubRestRepository;
+import com.allegro.recruitment.github.repository.dto.GithubRepoData;
 import com.allegro.recruitment.dto.GithubRepositoryDetailsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
