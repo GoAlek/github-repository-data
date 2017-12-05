@@ -46,7 +46,7 @@ public class GithubApiTestIT {
 
     @Before
     public void setUp() {
-        this.mockServer = MockRestServiceServer.createServer(githubRestRepository.getRestTemplate());
+        this.mockServer = MockRestServiceServer.createServer(githubRestRepository.getGithubRestTemplate());
     }
 
     @Test

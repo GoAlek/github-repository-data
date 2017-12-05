@@ -2,32 +2,23 @@ package com.allegro.recruitment.github.repository;
 
 import com.allegro.recruitment.github.repository.dto.GithubRepoData;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
 @Repository
 public class GithubRestRepository {
 
-    private final RestTemplate restTemplate;
+    private final RestTemplate githubRestTemplate;
 
-    public GithubRestRepository(
-            RestTemplateBuilder restTemplateBuilder,
-            @Value("${github-root-uri}") String gitHubRootUri,
-            @Qualifier("githubHeaderRequestInterceptor") ClientHttpRequestInterceptor clientHttpRequestInterceptor) {
-        this.restTemplate = restTemplateBuilder
-                .rootUri(gitHubRootUri)
-                .interceptors(clientHttpRequestInterceptor)
-                .build();
+    public GithubRestRepository(@Qualifier("githubRestTemplate") RestTemplate githubRestTemplate) {
+        this.githubRestTemplate = githubRestTemplate;
     }
 
     public GithubRepoData getGithubRepositoryData(String owner, String repositoryName) {
-        return restTemplate.getForObject("/repos/{owner}/{repo-name}", GithubRepoData.class, owner, repositoryName);
+        return githubRestTemplate.getForObject("/repos/{owner}/{repo-name}", GithubRepoData.class, owner, repositoryName);
     }
 
-    public RestTemplate getRestTemplate() {
-        return restTemplate;
+    public RestTemplate getGithubRestTemplate() {
+        return githubRestTemplate;
     }
 }
