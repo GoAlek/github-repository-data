@@ -11,7 +11,7 @@ import org.springframework.web.client.HttpClientErrorException;
 @Service
 public class GithubRepositoryService {
 
-    private GithubRestRepository githubRestRepository;
+    private final GithubRestRepository githubRestRepository;
 
     @Autowired
     public GithubRepositoryService(GithubRestRepository githubRestRepository) {
