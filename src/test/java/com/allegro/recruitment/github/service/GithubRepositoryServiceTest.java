@@ -1,7 +1,6 @@
 package com.allegro.recruitment.github.service;
 
 import com.allegro.recruitment.github.controller.dto.RepositoryDetails;
-import com.allegro.recruitment.dto.GithubRepositoryDetailsMapper;
 import com.allegro.recruitment.github.repository.GithubRestRepository;
 import com.allegro.recruitment.github.repository.dto.GithubRepoData;
 import org.junit.Test;
@@ -21,9 +20,6 @@ public class GithubRepositoryServiceTest {
     @Mock
     private GithubRestRepository githubRestRepository;
 
-    @Mock
-    private GithubRepositoryDetailsMapper githubRepositoryDetailsMapper;
-
     @InjectMocks
     private GithubRepositoryService githubRepositoryService;
 
@@ -39,7 +35,7 @@ public class GithubRepositoryServiceTest {
                 .build();
 
         when(githubRestRepository.getGithubRepositoryData(testOwner, testRepositoryName)).thenReturn(githubRepoData);
-        when(githubRepositoryDetailsMapper.map(githubRepoData)).thenCallRealMethod();
+        when(GithubRepoData.map(githubRepoData)).thenCallRealMethod();
 
         RepositoryDetails result = githubRepositoryService
                 .getGithubRepositoryDetails(testOwner, testRepositoryName);
