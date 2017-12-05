@@ -13,7 +13,6 @@ public class GithubRepositoryService {
 
     private final GithubRestRepository githubRestRepository;
 
-    @Autowired
     public GithubRepositoryService(GithubRestRepository githubRestRepository) {
         this.githubRestRepository = githubRestRepository;
     }
