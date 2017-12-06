@@ -9,18 +9,18 @@ import org.springframework.web.client.RestTemplate;
 @Repository
 public class GithubRestRepository {
 
-    private final String gitHubReposUri;
+    private final String githubReposUri;
     private final RestTemplate githubRestTemplate;
 
     public GithubRestRepository(
-            @Value("${github-repos-uri}") String gitHubReposUri,
+            @Value("${github-repos-uri}") String githubReposUri,
             @Qualifier("githubRestTemplate") RestTemplate githubRestTemplate) {
-        this.gitHubReposUri = gitHubReposUri;
+        this.githubReposUri = githubReposUri;
         this.githubRestTemplate = githubRestTemplate;
     }
 
     public GithubRepoData getGithubRepositoryData(String owner, String repositoryName) {
-        return githubRestTemplate.getForObject(gitHubReposUri, GithubRepoData.class, owner, repositoryName);
+        return githubRestTemplate.getForObject(githubReposUri, GithubRepoData.class, owner, repositoryName);
     }
 
     public RestTemplate getGithubRestTemplate() {
