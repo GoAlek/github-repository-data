@@ -4,7 +4,6 @@ import com.allegro.recruitment.github.controller.dto.RepositoryDetails;
 import com.allegro.recruitment.github.exception.GithubRepositoryNotFoundException;
 import com.allegro.recruitment.github.repository.GithubRestRepository;
 import com.allegro.recruitment.github.repository.dto.GithubRepoData;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
