@@ -27,11 +27,11 @@ public class GithubRepositoryServiceTest {
     public void getRepositoryDetails_ReturnRepositoryDetails_IfOwnerAndRepositoryAreValid() {
         final String testOwner = "testOwner", testRepositoryName = "testRepository";
         GithubRepoData githubRepoData = GithubRepoData.builder()
-                .full_name("testRepository")
+                .fullName("testRepository")
                 .description("testDescription")
-                .clone_url("https://github.com/test/test.git")
-                .stargazers_count(10590)
-                .created_at("2015-03-19T18:21:20Z")
+                .cloneUrl("https://github.com/test/test.git")
+                .stargazersCount(10590)
+                .createdAt("2015-03-19T18:21:20Z")
                 .build();
 
         when(githubRestRepository.getGithubRepositoryData(testOwner, testRepositoryName)).thenReturn(githubRepoData);
@@ -40,11 +40,11 @@ public class GithubRepositoryServiceTest {
         RepositoryDetails result = githubRepositoryService
                 .getGithubRepositoryDetails(testOwner, testRepositoryName);
 
-        assertThat(result, hasProperty("fullName", equalTo(githubRepoData.getFull_name())));
+        assertThat(result, hasProperty("fullName", equalTo(githubRepoData.getFullName())));
         assertThat(result, hasProperty("description", equalTo(githubRepoData.getDescription())));
-        assertThat(result, hasProperty("cloneUrl", equalTo(githubRepoData.getClone_url())));
-        assertThat(result, hasProperty("stars", equalTo(githubRepoData.getStargazers_count())));
-        assertThat(result, hasProperty("createdAt", equalTo(githubRepoData.getCreated_at())));
+        assertThat(result, hasProperty("cloneUrl", equalTo(githubRepoData.getCloneUrl())));
+        assertThat(result, hasProperty("stars", equalTo(githubRepoData.getStargazersCount())));
+        assertThat(result, hasProperty("createdAt", equalTo(githubRepoData.getCreatedAt())));
     }
 
 }

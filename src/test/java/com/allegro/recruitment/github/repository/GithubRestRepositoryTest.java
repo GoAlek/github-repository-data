@@ -30,11 +30,11 @@ public class GithubRestRepositoryTest {
     public void getGithubRepositoryData_ReturnRepositoryData_IfOwnerAndRepositoryAreValid() {
         final String testOwner = "testOwner", testRepositoryName = "testRepository";
         GithubRepoData githubRepoData = GithubRepoData.builder()
-                .full_name("testRepository")
+                .fullName("testRepository")
                 .description("testDescription")
-                .clone_url("https://github.com/test/test.git")
-                .stargazers_count(10590)
-                .created_at("2015-03-19T18:21:20Z")
+                .cloneUrl("https://github.com/test/test.git")
+                .stargazersCount(10590)
+                .createdAt("2015-03-19T18:21:20Z")
                 .build();
 
         when(githubRestTemplate.getForObject(githubReposUri, GithubRepoData.class, testOwner, testRepositoryName))

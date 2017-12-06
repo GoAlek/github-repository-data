@@ -1,25 +1,36 @@
 package com.allegro.recruitment.github.repository.dto;
 
 import com.allegro.recruitment.github.controller.dto.RepositoryDetails;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 @Builder
+@AllArgsConstructor
 public class GithubRepoData {
-    private String full_name;
+    @JsonProperty("full_name")
+    private String fullName;
+
     private String description;
-    private String clone_url;
-    private Integer stargazers_count;
-    private String created_at;
+
+    @JsonProperty("clone_url")
+    private String cloneUrl;
+
+    @JsonProperty("stargazers_count")
+    private Integer stargazersCount;
+
+    @JsonProperty("created_at")
+    private String createdAt;
 
     public static RepositoryDetails map(GithubRepoData githubRepoData) {
         return RepositoryDetails.builder()
-                .fullName(githubRepoData.getFull_name())
+                .fullName(githubRepoData.getFullName())
                 .description(githubRepoData.getDescription())
-                .createdAt(githubRepoData.getCreated_at())
-                .cloneUrl(githubRepoData.getClone_url())
-                .stars(githubRepoData.getStargazers_count())
+                .createdAt(githubRepoData.getCreatedAt())
+                .cloneUrl(githubRepoData.getCloneUrl())
+                .stars(githubRepoData.getStargazersCount())
                 .build();
     }
 }

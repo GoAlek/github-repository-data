@@ -70,11 +70,11 @@ public class GithubApiTestIT {
 
         mockServer.verify();
         assertNotNull(result);
-        assertThat(result, hasProperty("full_name", equalTo(result.getFull_name())));
+        assertThat(result, hasProperty("full_name", equalTo(result.getFullName())));
         assertThat(result, hasProperty("description", equalTo(result.getDescription())));
-        assertThat(result, hasProperty("clone_url", equalTo(result.getClone_url())));
-        assertThat(result, hasProperty("stargazers_count", equalTo(result.getStargazers_count())));
-        assertThat(result, hasProperty("created_at", equalTo(result.getCreated_at())));
+        assertThat(result, hasProperty("clone_url", equalTo(result.getCloneUrl())));
+        assertThat(result, hasProperty("stargazers_count", equalTo(result.getStargazersCount())));
+        assertThat(result, hasProperty("created_at", equalTo(result.getCreatedAt())));
     }
 
     @Test
