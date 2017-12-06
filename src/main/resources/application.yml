@@ -1,5 +1,6 @@
 # Github API
 github-root-uri: "https://api.github.com"
+github-repos-uri: "/repos/{owner}/{repo-name}"
 
 # Github API required headers
 github-accept-header: "application/vnd.github.v3+json"
