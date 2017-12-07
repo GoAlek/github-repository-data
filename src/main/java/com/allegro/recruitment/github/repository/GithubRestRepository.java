@@ -8,7 +8,6 @@ import org.springframework.web.client.RestTemplate;
 
 @Repository
 public class GithubRestRepository {
-
     private final String githubReposUri;
     private final RestTemplate githubRestTemplate;
 
@@ -21,9 +20,5 @@ public class GithubRestRepository {
 
     public GithubRepoData getGithubRepositoryData(String owner, String repositoryName) {
         return githubRestTemplate.getForObject(githubReposUri, GithubRepoData.class, owner, repositoryName);
-    }
-
-    public RestTemplate getGithubRestTemplate() {
-        return githubRestTemplate;
     }
 }

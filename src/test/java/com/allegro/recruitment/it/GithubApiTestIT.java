@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -16,14 +17,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.test.web.client.response.DefaultResponseCreator;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 
 import static java.nio.file.Files.readAllBytes;
 import static java.nio.file.Paths.get;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasProperty;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
@@ -39,6 +38,10 @@ public class GithubApiTestIT {
     private MockRestServiceServer mockServer;
 
     @Autowired
+    @Qualifier("githubRestTemplate")
+    private RestTemplate githubRestTemplate;
+
+    @Autowired
     private GithubRestRepository githubRestRepository;
 
     @Rule
@@ -46,11 +49,11 @@ public class GithubApiTestIT {
 
     @Before
     public void setUp() {
-        this.mockServer = MockRestServiceServer.createServer(githubRestRepository.getGithubRestTemplate());
+        this.mockServer = MockRestServiceServer.createServer(githubRestTemplate);
     }
 
     @Test
-    public void shouldReturnSpecificDetailsOfGithubRepository() throws IOException {
+    public void givenValidRequestToGithubRepositoryApi_whenGetGithubRepository_thenStatus200() throws IOException {
         byte[] responseBody = readAllBytes(get(
                 "src",
                 "test",
@@ -70,23 +73,12 @@ public class GithubApiTestIT {
 
         mockServer.verify();
         assertNotNull(result);
-        assertThat(result, hasProperty("full_name", equalTo(result.getFullName())));
-        assertThat(result, hasProperty("description", equalTo(result.getDescription())));
-        assertThat(result, hasProperty("clone_url", equalTo(result.getCloneUrl())));
-        assertThat(result, hasProperty("stargazers_count", equalTo(result.getStargazersCount())));
-        assertThat(result, hasProperty("created_at", equalTo(result.getCreatedAt())));
     }
 
     @Test
-    public void shouldReturnStatusNotFoundIfRepositoryDoesNotExists() throws IOException {
-        byte[] responseBody = readAllBytes(get(
-                "src",
-                "test",
-                "resources",
-                "mock", "response",
-                "remote.server.response.get.repo.404.json"));
+    public void givenInvalidRequestToGithubRepositoryApi_whenGetGithubRepository_thenStatus404() {
         DefaultResponseCreator responseCreator = withStatus(HttpStatus.NOT_FOUND)
-                .body(responseBody).contentType(MediaType.APPLICATION_JSON);
+                .contentType(MediaType.APPLICATION_JSON);
 
         mockServer
                 .expect(requestTo(gitHubRootUri + "/repos/google/non-existent-repo"))
