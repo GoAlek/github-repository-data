@@ -26,7 +26,7 @@ public class GithubRepositoryDataServiceTestIT {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void shouldReturnDetailsIfRepositoryExists() {
+    public void givenValidGithubRepositoryNameAndOwner_whenAskedForGithubRepository_thenShouldReturnRepositoryDetails() {
         ResponseEntity<RepositoryDetails> responseEntity = restTemplate
                 .getForEntity(
                         controllerPath + "/{owner}/{repository-name}",
@@ -35,11 +35,10 @@ public class GithubRepositoryDataServiceTestIT {
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertNotNull(responseEntity.getBody());
-        assertThat(responseEntity.getBody(), instanceOf(RepositoryDetails.class));
     }
 
     @Test
-    public void shouldReturnNotFoundIfRepositoryDoesNotExist() {
+    public void givenInvalidGithubRepositoryNameAndOwner_whenAskedForGithubRepository_thenShouldReturnNotFound() {
         ResponseEntity<ApiErrorResponse> responseEntity = restTemplate
                 .getForEntity(
                         controllerPath + "/{owner}/{repository-name}",
@@ -48,6 +47,5 @@ public class GithubRepositoryDataServiceTestIT {
 
         assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
         assertNotNull(responseEntity.getBody());
-        assertThat(responseEntity.getBody(), instanceOf(ApiErrorResponse.class));
     }
 }
