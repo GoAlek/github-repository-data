@@ -2,26 +2,32 @@ package com.allegro.recruitment.github.controller;
 
 import com.allegro.recruitment.github.controller.dto.RepositoryDetails;
 import com.allegro.recruitment.github.service.GithubRepositoryService;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 
-import static org.mockito.Mockito.when;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
+@WebMvcTest(GithubRepositoryController.class)
 public class GithubRepositoryControllerTest {
+    @Autowired
+    private MockMvc mockMvc;
 
-    @Mock
+    @MockBean
     private GithubRepositoryService githubRepositoryService;
 
-    @InjectMocks
-    private GithubRepositoryController githubRepositoryController;
-
     @Test
-    public void getRepositoryDetails_ReturnProperResponse_IfOwnerAndRepositoryAreValid() {
+    public void getRepositoryDetails_ReturnProperResponse_IfOwnerAndRepositoryAreValid() throws Exception {
         final String testOwner = "testOwner", testRepositoryName = "testRepository";
         RepositoryDetails repositoryDetails = RepositoryDetails.builder()
                 .fullName("testRepository")
@@ -31,13 +37,17 @@ public class GithubRepositoryControllerTest {
                 .createdAt("2015-03-19T18:21:20Z")
                 .build();
 
-        when(githubRepositoryService
-                .getGithubRepositoryDetails(testOwner, testRepositoryName))
-                .thenReturn(repositoryDetails);
+        given(githubRepositoryService.getGithubRepositoryDetails(testOwner, testRepositoryName))
+                .willReturn(repositoryDetails);
 
-        RepositoryDetails result = githubRepositoryController.getRepositoryDetails(testOwner, testRepositoryName);
-
-        Assert.assertEquals(repositoryDetails, result);
+        mockMvc.perform(get("/repositories/testOwner/testRepository")
+            .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$").isMap())
+            .andExpect(jsonPath("$.fullName", is(repositoryDetails.getFullName())))
+            .andExpect(jsonPath("$.description", is(repositoryDetails.getDescription())))
+            .andExpect(jsonPath("$.cloneUrl", is(repositoryDetails.getCloneUrl())))
+            .andExpect(jsonPath("$.stars", is(repositoryDetails.getStars())))
+            .andExpect(jsonPath("$.createdAt", is(repositoryDetails.getCreatedAt())));
     }
-
 }
