@@ -1,7 +1,6 @@
 package com.allegro.recruitment.github.controller;
 
 import com.allegro.recruitment.github.controller.dto.RepositoryDetails;
-import com.allegro.recruitment.github.exception.GithubRepositoryNotFoundException;
 import com.allegro.recruitment.github.service.GithubRepositoryService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

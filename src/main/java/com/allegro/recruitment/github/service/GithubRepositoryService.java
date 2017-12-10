@@ -1,7 +1,7 @@
 package com.allegro.recruitment.github.service;
 
 import com.allegro.recruitment.github.controller.dto.RepositoryDetails;
-import com.allegro.recruitment.github.exception.GithubRepositoryNotFoundException;
+import com.allegro.recruitment.github.exception.GithubRepositoryRetrievalException;
 import com.allegro.recruitment.github.repository.GithubRestRepository;
 import com.allegro.recruitment.github.repository.dto.GithubRepoData;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class GithubRepositoryService {
         try {
             githubRepoData = githubRestRepository.getGithubRepositoryData(owner, repositoryName);
         } catch (HttpClientErrorException ex) {
-            throw new GithubRepositoryNotFoundException(ex.getStatusCode(), ex.getStatusText());
+            throw new GithubRepositoryRetrievalException(ex.getStatusCode(), ex.getStatusText(), owner, repositoryName);
         }
         return GithubRepoData.map(githubRepoData);
     }
