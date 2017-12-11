@@ -60,9 +60,11 @@ public class GithubRepositoryControllerTest {
     public void getRepositoryDetails_ReturnErrorResponse_IfGithubReturns500() throws Exception {
         given(githubRepositoryService.getGithubRepositoryDetails(testOwner, testRepositoryName))
                 .willThrow(
-                        new HttpServerErrorException(
-                        HttpStatus.INTERNAL_SERVER_ERROR,
-                        "Unexpected error has occurred on the server side."));
+                        new GithubRepositoryRetrievalException(
+                                "INTERNAL_SERVER_ERROR",
+                                HttpStatus.INTERNAL_SERVER_ERROR,
+                                testOwner,
+                                testRepositoryName));
 
         mockMvc.perform(get(String.format("/repositories/%s/%s", testOwner, testRepositoryName))
             .contentType(MediaType.APPLICATION_JSON))
@@ -73,10 +75,12 @@ public class GithubRepositoryControllerTest {
     @Test
     public void getRepositoryDetails_ReturnErrorResponse_IfGithubReturns400() throws Exception {
         given(githubRepositoryService.getGithubRepositoryDetails(testOwner, testRepositoryName))
-                .willThrow(new GithubRepositoryRetrievalException(
-                        HttpStatus.BAD_REQUEST,
-                        testOwner,
-                        testRepositoryName));
+                .willThrow(
+                        new GithubRepositoryRetrievalException(
+                            "NOT_FOUND",
+                            HttpStatus.BAD_REQUEST,
+                            testOwner,
+                            testRepositoryName));
 
         mockMvc.perform(get(String.format("/repositories/%s/%s", testOwner, testRepositoryName))
                 .contentType(MediaType.APPLICATION_JSON))

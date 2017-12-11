@@ -6,6 +6,7 @@ import com.allegro.recruitment.github.repository.GithubRestRepository;
 import com.allegro.recruitment.github.repository.dto.GithubRepoData;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 
 @Service
 public class GithubRepositoryService {
@@ -20,8 +21,13 @@ public class GithubRepositoryService {
         GithubRepoData githubRepoData;
         try {
             githubRepoData = githubRestRepository.getGithubRepositoryData(owner, repositoryName);
-        } catch (HttpClientErrorException ex) {
-            throw new GithubRepositoryRetrievalException(ex.getStatusCode(), ex.getStatusText(), owner, repositoryName);
+        } catch (HttpClientErrorException | HttpServerErrorException ex) {
+            throw new GithubRepositoryRetrievalException(
+                    ex.getStatusText(),
+                    ex,
+                    ex.getStatusCode(),
+                    owner,
+                    repositoryName);
         }
         return GithubRepoData.map(githubRepoData);
     }
