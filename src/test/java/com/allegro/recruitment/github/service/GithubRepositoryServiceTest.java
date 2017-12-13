@@ -35,7 +35,6 @@ public class GithubRepositoryServiceTest {
                 .build();
 
         when(githubRestRepository.getGithubRepositoryData(testOwner, testRepositoryName)).thenReturn(githubRepoData);
-        when(GithubRepoData.map(githubRepoData)).thenCallRealMethod();
 
         RepositoryDetails result = githubRepositoryService
                 .getGithubRepositoryDetails(testOwner, testRepositoryName);
