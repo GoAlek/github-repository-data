@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.client.HttpServerErrorException;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
@@ -85,6 +84,22 @@ public class GithubRepositoryControllerTest {
         mockMvc.perform(get(String.format("/repositories/%s/%s", testOwner, testRepositoryName))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$").isMap());
+    }
+
+    @Test
+    public void getRepositoryDetails_ReturnErrorResponse_IfGithubReturns408() throws Exception {
+        given(githubRepositoryService.getGithubRepositoryDetails(testOwner, testRepositoryName))
+                .willThrow(
+                        new GithubRepositoryRetrievalException(
+                            "REQUEST_TIMEOUT",
+                            HttpStatus.REQUEST_TIMEOUT,
+                            testOwner,
+                            testRepositoryName));
+
+        mockMvc.perform(get(String.format("/repositories/%s/%s", testOwner, testRepositoryName))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isRequestTimeout())
                 .andExpect(jsonPath("$").isMap());
     }
 }
