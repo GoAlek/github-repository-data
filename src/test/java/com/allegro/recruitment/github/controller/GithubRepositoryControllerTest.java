@@ -60,7 +60,7 @@ public class GithubRepositoryControllerTest {
         given(githubRepositoryService.getGithubRepositoryDetails(testOwner, testRepositoryName))
                 .willThrow(
                         new GithubRepositoryRetrievalException(
-                                "INTERNAL_SERVER_ERROR",
+                                HttpStatus.INTERNAL_SERVER_ERROR.name(),
                                 HttpStatus.INTERNAL_SERVER_ERROR,
                                 testOwner,
                                 testRepositoryName));
@@ -68,7 +68,10 @@ public class GithubRepositoryControllerTest {
         mockMvc.perform(get(String.format("/repositories/%s/%s", testOwner, testRepositoryName))
             .contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().is5xxServerError())
-            .andExpect(jsonPath("$").isMap());
+            .andExpect(jsonPath("$").isMap())
+            .andExpect(jsonPath("$.status", is(HttpStatus.INTERNAL_SERVER_ERROR.name())))
+            .andExpect(jsonPath("$.requestParameters.repositoryOwner", is(testOwner)))
+            .andExpect(jsonPath("$.requestParameters.repositoryName", is(testRepositoryName)));
     }
 
     @Test
@@ -76,7 +79,7 @@ public class GithubRepositoryControllerTest {
         given(githubRepositoryService.getGithubRepositoryDetails(testOwner, testRepositoryName))
                 .willThrow(
                         new GithubRepositoryRetrievalException(
-                            "NOT_FOUND",
+                            HttpStatus.BAD_REQUEST.name(),
                             HttpStatus.BAD_REQUEST,
                             testOwner,
                             testRepositoryName));
@@ -84,7 +87,10 @@ public class GithubRepositoryControllerTest {
         mockMvc.perform(get(String.format("/repositories/%s/%s", testOwner, testRepositoryName))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is4xxClientError())
-                .andExpect(jsonPath("$").isMap());
+                .andExpect(jsonPath("$").isMap())
+                .andExpect(jsonPath("$.status", is(HttpStatus.BAD_REQUEST.name())))
+                .andExpect(jsonPath("$.requestParameters.repositoryOwner", is(testOwner)))
+                .andExpect(jsonPath("$.requestParameters.repositoryName", is(testRepositoryName)));
     }
 
     @Test
@@ -92,7 +98,7 @@ public class GithubRepositoryControllerTest {
         given(githubRepositoryService.getGithubRepositoryDetails(testOwner, testRepositoryName))
                 .willThrow(
                         new GithubRepositoryRetrievalException(
-                            "REQUEST_TIMEOUT",
+                            HttpStatus.REQUEST_TIMEOUT.name(),
                             HttpStatus.REQUEST_TIMEOUT,
                             testOwner,
                             testRepositoryName));
@@ -100,6 +106,9 @@ public class GithubRepositoryControllerTest {
         mockMvc.perform(get(String.format("/repositories/%s/%s", testOwner, testRepositoryName))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isRequestTimeout())
-                .andExpect(jsonPath("$").isMap());
+                .andExpect(jsonPath("$").isMap())
+                .andExpect(jsonPath("$.status", is(HttpStatus.REQUEST_TIMEOUT.name())))
+                .andExpect(jsonPath("$.requestParameters.repositoryOwner", is(testOwner)))
+                .andExpect(jsonPath("$.requestParameters.repositoryName", is(testRepositoryName)));
     }
 }
