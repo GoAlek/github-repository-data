@@ -1,4 +1,4 @@
-package com.allegro.recruitment.it;
+package com.allegro.recruitment.github.it;
 
 import com.allegro.recruitment.github.controller.dto.RepositoryDetails;
 import com.allegro.recruitment.dto.ApiErrorResponse;
@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

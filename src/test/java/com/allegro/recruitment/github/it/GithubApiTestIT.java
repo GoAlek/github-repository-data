@@ -1,4 +1,4 @@
-package com.allegro.recruitment.it;
+package com.allegro.recruitment.github.it;
 
 import com.allegro.recruitment.github.repository.GithubRestRepository;
 import com.allegro.recruitment.github.repository.dto.GithubRepoData;
