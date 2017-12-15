@@ -21,7 +21,7 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.allegro.recruitment.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.allegro.recruitment.github.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .produces(Collections.singleton("application/json"))
