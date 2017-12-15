@@ -1,7 +1,6 @@
-package com.allegro.recruitment.exception;
+package com.allegro.recruitment.github.exception;
 
 import com.allegro.recruitment.dto.ApiErrorResponse;
-import com.allegro.recruitment.github.exception.GithubRepositoryRetrievalException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -14,7 +13,7 @@ import java.util.Map;
 
 @Slf4j
 @ControllerAdvice
-public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+public class GithubResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(GithubRepositoryRetrievalException.class)
     public final ResponseEntity<ApiErrorResponse> handleGithubRepositoryRetrievalExceptions(
