@@ -13,6 +13,7 @@ public class GithubRepoData {
     @JsonProperty("full_name")
     private String fullName;
 
+    @JsonProperty("description")
     private String description;
 
     @JsonProperty("clone_url")
