@@ -1,8 +1,9 @@
 package com.allegro.recruitment.github.exception;
 
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.client.HttpClientErrorException;
 
+@Getter
 public class GithubRepositoryRetrievalException extends RuntimeException {
     private final HttpStatus statusCode;
     private final String repositoryOwner;
@@ -29,17 +30,5 @@ public class GithubRepositoryRetrievalException extends RuntimeException {
         this.statusCode = statusCode;
         this.repositoryOwner = repositoryOwner;
         this.repositoryName = repositoryName;
-    }
-
-    public HttpStatus getStatusCode() {
-        return statusCode;
-    }
-
-    public String getRepositoryOwner() {
-        return repositoryOwner;
-    }
-
-    public String getRepositoryName() {
-        return repositoryName;
     }
 }

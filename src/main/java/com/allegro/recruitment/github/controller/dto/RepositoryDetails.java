@@ -8,9 +8,9 @@ import lombok.Getter;
 @Builder
 @AllArgsConstructor
 public class RepositoryDetails {
-    private String fullName;
-    private String description;
-    private String cloneUrl;
-    private Integer stars;
-    private String createdAt;
+    private final String fullName;
+    private final String description;
+    private final String cloneUrl;
+    private final Integer stars;
+    private final String createdAt;
 }
