@@ -11,19 +11,19 @@ import lombok.Getter;
 @AllArgsConstructor
 public class GithubRepoData {
     @JsonProperty("full_name")
-    private String fullName;
+    private final String fullName;
 
     @JsonProperty("description")
-    private String description;
+    private final String description;
 
     @JsonProperty("clone_url")
-    private String cloneUrl;
+    private final String cloneUrl;
 
     @JsonProperty("stargazers_count")
-    private Integer stargazersCount;
+    private final Integer stargazersCount;
 
     @JsonProperty("created_at")
-    private String createdAt;
+    private final String createdAt;
 
     public static RepositoryDetails map(GithubRepoData githubRepoData) {
         return RepositoryDetails.builder()
