@@ -6,7 +6,7 @@
 
     <groupId>com.allegro.recruitment</groupId>
     <artifactId>github-repository-data</artifactId>
-    <version>1.0</version>
+    <version>${project.version}</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -16,9 +16,13 @@
     </parent>
 
     <properties>
+        <project.version>1.0</project.version>
+        <swagger.version>2.7.0</swagger.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <skip.it>false</skip.it>
     </properties>
 
@@ -35,12 +39,12 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.7.0</version>
+            <version>${swagger.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.7.0</version>
+            <version>${swagger.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
