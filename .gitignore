@@ -7,3 +7,6 @@
 *.iml
 out
 gen
+/github-repository-data.ipr
+/github-repository-data.iml
+/github-repository-data.iws
