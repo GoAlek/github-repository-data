@@ -32,11 +32,11 @@ class GithubRepositoryServiceSpec extends Specification {
 		when: "requesting for repository details"
 			def result = githubRepositoryService.getGithubRepositoryDetails(testOwner, testRepositoryName)
 
-		then: "repository data is returned"
-			result.getFullName() == githubRepoData.getFullName()
-			result.getDescription() == githubRepoData.getDescription()
-			result.getCloneUrl() == githubRepoData.getCloneUrl()
-			result.getStars() == githubRepoData.getStargazersCount()
-			result.getCreatedAt() == githubRepoData.getCreatedAt()
+		then: "repository details with following properties is returned"
+			assert result.getFullName() == githubRepoData.getFullName()
+			assert result.getDescription() == githubRepoData.getDescription()
+			assert result.getCloneUrl() == githubRepoData.getCloneUrl()
+			assert result.getStars() == githubRepoData.getStargazersCount()
+			assert result.getCreatedAt() == githubRepoData.getCreatedAt()
 	}
 }
